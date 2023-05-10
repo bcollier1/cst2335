@@ -3,5 +3,14 @@
     <style name="Base.Theme.BradysAndroidLab" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <!-- Primary band color. -->
+        <item name="colorPrimary">@color/my_primary_dark</item>
+
+        <!-- Secondary band color. -->
+        <item name="colorSecondary">@color/my_secondary_dark</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/my_statusbar_dark</item>
     </style>
 </resources>

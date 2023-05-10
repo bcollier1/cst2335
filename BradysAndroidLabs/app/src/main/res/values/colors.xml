@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="my_primary">#FF0000</color>
+    <color name="my_secondary">#FF6060</color>
+    <color name="my_statusbar">#FFA112</color>
+    <color name="my_primary_dark">#750000</color>
+    <color name="my_secondary_dark">#953939</color>
+    <color name="my_statusbar_dark">#88570B</color>
+    <color name="my_text">#FF0000</color>
 </resources>
