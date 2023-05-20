@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="UseSwitchCompatOrMaterialXml">
 
     <TextView
         android:id="@+id/textview"
@@ -26,5 +27,23 @@
         android:layout_height="wrap_content"
         android:text="@string/editmessage"
         android:hint="@string/hinttext"/>
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/compoundbuttonmessage"/>
+
+    <Switch
+        android:id="@+id/switchbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/compoundbuttonmessage"/>
+
+    <RadioButton
+        android:id="@+id/radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/compoundbuttonmessage"/>
 
 </LinearLayout>
