@@ -46,4 +46,17 @@
         android:layout_height="wrap_content"
         android:text="@string/compoundbuttonmessage"/>
 
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_algonquin"
+        android:tag="logo_algonquin.png"/>
+
+    <ImageButton
+        android:id="@+id/myimagebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_algonquin" />
+
 </LinearLayout>
