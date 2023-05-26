@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layout_marginTop="27dp"
+    android:layout_marginBottom="27dp"
+    android:layout_marginLeft="48dp"
+    android:layout_marginRight="48dp"
+    android:nextFocusUp="@id/button"
+    android:nextFocusDown="@id/button2"
+    android:nextFocusRight="@id/button3"
+    android:nextFocusLeft="@id/switch1">
 
     <Button
         android:id="@+id/button"
