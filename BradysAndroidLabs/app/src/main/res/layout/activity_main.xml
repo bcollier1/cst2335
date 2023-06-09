@@ -6,23 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/pswdText"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+        android:hint="@string/passHint"
+        app:layout_constraintStart_toStartOf="@+id/pswdView"
+        app:layout_constraintTop_toBottomOf="@+id/pswdView"
+        tools:ignore="SpeakableTextPresentCheck, Autofill" />
+
     <TextView
+        android:id="@+id/emailView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_message"
+        android:text="@string/email_message"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.317"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.282" />
+
+    <EditText
+        android:id="@+id/emailText"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/emailView"
+        app:layout_constraintTop_toBottomOf="@+id/emailView"
+        tools:ignore="Autofill"/>
+
+    <TextView
+        android:id="@+id/pswdView"
+        android:layout_width="149dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/pswd_message"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/emailText"
+        app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/loginButton"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:text="@string/button_message"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:cornerRadius="5dp"
+        app:layout_constraintStart_toStartOf="@+id/pswdText"
+        app:layout_constraintTop_toBottomOf="@+id/pswdText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

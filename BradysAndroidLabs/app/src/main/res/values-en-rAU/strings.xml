@@ -2,5 +2,14 @@
 <resources>
     <string name="app_name">Brady\'s Android Lab</string>
     <string name="hello_message">Hello World!</string>
-    <string name="button_message">I\'m a button</string>
+    <string name="button_message">Login</string>
+    <string name="email_message">Enter your email address:</string>
+    <string name="email_hint">Type email here</string>
+    <string name="pswd_message">Type your password:</string>
+    <string name="phoneButton">CALL NUMBER</string>
+    <string name="pictureButton">CHANGE PICTURE</string>
+    <string name="textView">I\'m a Textview</string>
+    <string name="passHint">Enter your password</string>
+    <string name="backButton">Back</string>
+    <string name="imageDescription">Thumbnail</string>
 </resources>
