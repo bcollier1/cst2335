@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Brady\'s Android Lab</string>
-    <string name="hello_message">Hello World!</string>
-    <string name="button_message">I\'m a button</string>
+    <string name="password_message">Enter your password:</string>
+    <string name="button_message">Login</string>
+    <string name="failMessage">Failed Attempt!</string>
+    <string name="successMessage">Success!</string>
+    <string name="passHint">Enter your password</string>
 </resources>
