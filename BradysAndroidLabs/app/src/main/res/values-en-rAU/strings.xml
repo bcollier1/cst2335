@@ -3,4 +3,9 @@
     <string name="app_name">Brady\'s Android Lab</string>
     <string name="hello_message">Hello World!</string>
     <string name="button_message">I\'m a button</string>
+    <string name="messageHint">Message here</string>
+    <string name="receiveLabel">Receive</string>
+    <string name="sendLabel">Send</string>
+    <string name="sendImageDesc">Senders Image</string>
+    <string name="receiveImageDesc">Recipients Image</string>
 </resources>

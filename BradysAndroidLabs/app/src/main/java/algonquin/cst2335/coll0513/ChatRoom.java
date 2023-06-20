@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,42 @@ public class ChatRoom extends AppCompatActivity {
     protected RecyclerView recyclerView;
     protected EditText textInput;
     protected Button btn;
-    protected ArrayList<String> messages;
+
+    protected Button rBtn;
+    protected ArrayList<ChatMessage> messages;
     ChatRoomViewModel chatModel ;
 
+    public static class ChatMessage {
+        String message;
+        String timeSent;
+        boolean isSentButton;
+
+        ChatMessage(String m, String t, boolean sent)
+        {
+            message = m;
+            timeSent = t;
+            isSentButton = sent;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public String getTimeSent() {
+            return timeSent;
+        }
+
+        public boolean isSentButton() {
+            return isSentButton;
+        }
+    }
+
+    private String getCurrentTimestamp() {
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh:mm:ss a");
+        return sdf.format(new Date());
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,20 +74,34 @@ public class ChatRoom extends AppCompatActivity {
         chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
         messages = chatModel.messages.getValue();
         btn = binding.sendButton;
+        rBtn = binding.receiveButton;
         textInput = binding.textMessage;
         recyclerView = binding.recycleView;
 
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
-        String currentDateandTime = sdf.format(new Date());
+        if(messages == null)
+        {
+            chatModel.messages.postValue(messages = new ArrayList<>());
+        }
+
 
         btn.setOnClickListener(ck -> {
-            messages.add(textInput.getText().toString());
+            boolean isSentButton = true;
+            messages.add(new ChatMessage(textInput.getText().toString(), getCurrentTimestamp(), isSentButton));
             myAdapter.notifyDataSetChanged();
             textInput.setText("");
+            recyclerView.scrollToPosition(messages.size() - 1);
+        });
 
+        rBtn.setOnClickListener(ck -> {
+            boolean isSentButton = false;
+            messages.add(new ChatMessage(textInput.getText().toString(), getCurrentTimestamp(), isSentButton));
+            myAdapter.notifyDataSetChanged();
+            textInput.setText("");
+            recyclerView.scrollToPosition(messages.size() - 1);
         });
 
         recyclerView.setAdapter(myAdapter = new RecyclerView.Adapter<MyRowHolder>() {
+            @NonNull
             @Override
             public MyRowHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
@@ -68,7 +116,8 @@ public class ChatRoom extends AppCompatActivity {
             }
 
             public int getItemViewType(int position){
-                if (position % 2 == 0) {
+                ChatMessage message = messages.get(position);
+                if (message.isSentButton()) {
                     return 1;
                 }
                 else {
@@ -77,8 +126,9 @@ public class ChatRoom extends AppCompatActivity {
             }
             @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
-                String obj = messages.get(position);
-                holder.theMessage.setText(obj);
+                ChatMessage obj = messages.get(position);
+                holder.theMessage.setText(obj.getMessage());
+                holder.timestamp.setText(obj.getTimeSent());
             }
 
             @Override
@@ -91,7 +141,7 @@ public class ChatRoom extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    protected class MyRowHolder extends RecyclerView.ViewHolder {
+    protected static class MyRowHolder extends RecyclerView.ViewHolder {
         TextView theMessage;
         TextView timestamp;
 
