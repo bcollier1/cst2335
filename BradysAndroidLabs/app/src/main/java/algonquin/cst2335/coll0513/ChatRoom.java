@@ -16,6 +16,8 @@ import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -106,9 +108,9 @@ public class ChatRoom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = Room.databaseBuilder(getApplicationContext(), MessageDatabase.class, "database-name").build();
         mDAO = db.cmDAO();
-
         binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolBar);
         chatModel = new ViewModelProvider(this).get(ChatRoomViewModel.class);
         chatModel.selectedMessage.observe(this, newMessage ->{
 
@@ -201,6 +203,57 @@ public class ChatRoom extends AppCompatActivity {
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        String words = "";
+
+        if(item.getItemId() == R.id.item_1){
+            int selectedPosition = recyclerView.getChildLayoutPosition(recyclerView.getFocusedChild());
+                AlertDialog.Builder builder = new AlertDialog.Builder(ChatRoom.this);
+                builder.setMessage("Do you want to delete the message: " + messages.get(selectedPosition).getMessage())
+                        .setTitle("Question:")
+                        .setNegativeButton("No", ((dialog, cl) -> {
+                        }))
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            ChatMessage toDelete = messages.get(selectedPosition);
+                            Executor thread = Executors.newSingleThreadExecutor();
+                            thread.execute(() -> {
+                                mDAO.deleteMessage(toDelete);
+                                messages.remove(selectedPosition);
+                                runOnUiThread(() -> myAdapter.notifyDataSetChanged());
+                                Snackbar.make(textInput, "Deleted message #" + selectedPosition, Snackbar.LENGTH_LONG)
+                                        .setAction("Undo", cl -> {
+                                            thread.execute(() -> {
+                                                mDAO.insertMessage(toDelete);
+                                                messages.add(selectedPosition, toDelete);
+                                            });
+                                            runOnUiThread(() -> myAdapter.notifyDataSetChanged());
+                                        })
+                                        .show();
+                            });
+                        })
+                        .create().show();
+            }
+
+        else if(item.getItemId() == R.id.item_2){
+            words = "Version 1.0, created by Brady Collier";
+        }
+
+        Toast.makeText(this, words, Toast.LENGTH_LONG).show();
+
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        getMenuInflater().inflate(R.menu.my_menu, menu);
+
+        return true;
     }
 
     class MyRowHolder extends RecyclerView.ViewHolder {
