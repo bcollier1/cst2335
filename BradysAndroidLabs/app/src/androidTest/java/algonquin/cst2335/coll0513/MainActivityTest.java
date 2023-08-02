@@ -27,73 +27,73 @@ public class MainActivityTest {
 
     @Test
     public void mainActivityTest() {
-        ViewInteraction appCompatEditText = onView(withId(R.id.passwordField));
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityField));
         appCompatEditText.perform(replaceText("12345"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(withId(R.id.loginButton));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(withId(R.id.passwordView));
+        ViewInteraction textView = onView(withId(R.id.cityVeiw));
         textView.check(matches(withText("Failed Attempt!")));
     }
 
     @Test
     public void passwordCheckUpperTest(){
-        ViewInteraction appCompatEditText = onView(withId(R.id.passwordField));
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityField));
         appCompatEditText.perform(replaceText("password1234!"));
 
         ViewInteraction materialButton = onView(withId(R.id.loginButton));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(withId(R.id.passwordView));
+        ViewInteraction textView = onView(withId(R.id.cityVeiw));
         textView.check(matches(withText("Failed Attempt!")));
     }
 
     @Test
     public void passwordCheckLowerTest(){
-        ViewInteraction appCompatEditText = onView(withId(R.id.passwordField));
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityField));
         appCompatEditText.perform(replaceText("PASSWORD123!"));
 
         ViewInteraction materialButton = onView(withId(R.id.loginButton));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(withId(R.id.passwordView));
+        ViewInteraction textView = onView(withId(R.id.cityVeiw));
         textView.check(matches(withText("Failed Attempt!")));
     }
 
     @Test
     public void passwordCheckNumericTest(){
-        ViewInteraction appCompatEditText = onView(withId(R.id.passwordField));
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityField));
         appCompatEditText.perform(replaceText("Password!"));
 
         ViewInteraction materialButton = onView(withId(R.id.loginButton));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(withId(R.id.passwordView));
+        ViewInteraction textView = onView(withId(R.id.cityVeiw));
         textView.check(matches(withText("Failed Attempt!")));
     }
 
     @Test
     public void passwordCheckSpecialTest(){
-        ViewInteraction appCompatEditText = onView(withId(R.id.passwordField));
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityField));
         appCompatEditText.perform(replaceText("Password12"));
 
         ViewInteraction materialButton = onView(withId(R.id.loginButton));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(withId(R.id.passwordView));
+        ViewInteraction textView = onView(withId(R.id.cityVeiw));
         textView.check(matches(withText("Failed Attempt!")));
     }
 
     @Test
     public void passwordValidationTest(){
-        ViewInteraction appCompatEditText = onView(withId(R.id.passwordField));
+        ViewInteraction appCompatEditText = onView(withId(R.id.cityField));
         appCompatEditText.perform(replaceText("Password1!"));
 
         ViewInteraction materialButton = onView(withId(R.id.loginButton));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(withId(R.id.passwordView));
+        ViewInteraction textView = onView(withId(R.id.cityVeiw));
         textView.check(matches(withText("Success!")));
     }
 

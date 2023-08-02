@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Brady\'s Android Lab</string>
-    <string name="password_message">Enter your password:</string>
-    <string name="button_message">Login</string>
-    <string name="failMessage">Failed Attempt!</string>
-    <string name="successMessage">Success!</string>
-    <string name="passHint">Enter your password</string>
+    <string name="city_message">Type in the name of a city:</string>
+    <string name="button_message">Get Forecast</string>
+    <string name="cityHint">Type city name here</string>
+    <string name="temp">The current temperature is: %s °C</string>
+    <string name="max">The maximum temperature is: %s °C</string>
+    <string name="min">The minimum temperature is: %s °C</string>
+    <string name="humidity">The humidity is: %s</string>
 </resources>
